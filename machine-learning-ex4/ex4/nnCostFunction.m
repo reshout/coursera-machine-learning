@@ -75,6 +75,22 @@ for i = 1 : m
 end
 J = J .* (1 ./ m);
 
+reg_1 = 0;
+for j = 1 : size(Theta1, 1)
+    for k = 2 : size(Theta1, 2)
+        reg_1 = reg_1 .+ (Theta1(j, k) .^ 2);
+    end
+end
+
+reg_2 = 0;
+for j = 1 : size(Theta2, 1)
+    for k = 2 : size(Theta2, 2)
+        reg_2 = reg_2 .+ (Theta2(j, k) .^ 2);
+    end
+end
+
+J = J .+ ((lambda ./ (2 .* m)) .* (reg_1 .+ reg_2));
+
 % -------------------------------------------------------------
 
 % =========================================================================
