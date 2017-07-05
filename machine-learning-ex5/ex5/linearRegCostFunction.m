@@ -25,6 +25,7 @@ tempTheta = theta;
 tempTheta(1) = 0;
 
 J = sum((hX .- y) .^ 2) ./ (2 .* m) + (lambda ./ (2 .* m)) .* sum(tempTheta .^ 2);
+grad = (X' * (hX .- y)) .* (1 ./ m) .+ (lambda ./ m) .* tempTheta;
 
 
 % =========================================================================
